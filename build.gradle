@@ -24,6 +24,7 @@ dependencies {
 	compile 'org.seasar.doma:doma:2.6.0'
 	compile 'org.springframework:spring-tx:4.2.3.RELEASE'
 	compile 'org.springframework:spring-jdbc:4.2.3.RELEASE'
+	compile 'org.postgresql:postgresql:9.4-1206-jdbc42'
 
 }
 

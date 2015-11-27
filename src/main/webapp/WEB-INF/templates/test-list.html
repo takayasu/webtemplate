@@ -1,0 +1,21 @@
+<html>
+<head>
+<meta charset="UTF-8"></meta>
+<title>Test List</title>
+</head>
+<body>
+
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+		</tr>
+		<tr th:each="emp : ${list}">
+			<td th:text="${emp.id}">1</td>
+			<td th:text="${emp.name}">あいう</td>
+		</tr>
+	</table>
+
+</body>
+
+</html>

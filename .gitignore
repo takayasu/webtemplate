@@ -4,3 +4,5 @@
 .gradle/
 .settings/
 build/
+apt/
+bin/
