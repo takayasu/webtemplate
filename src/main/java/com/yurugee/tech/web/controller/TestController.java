@@ -76,25 +76,4 @@ public class TestController {
 	}
 
 
-	@RequestMapping(path="add2" ,produces="text/plain;charset=UTF-8")
-	public ModelAndView requestAdd(HttpServletRequest request) throws UnsupportedEncodingException{
-
-		Employee emp = new Employee();
-		emp.id = request.getParameter("id");
-		emp.name = request.getParameter("name");
-
-		empDao.insert(emp);
-
-
-		List<Employee> list = empDao.allList();
-
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("list", list);
-		mv.setViewName("test-list");
-
-		return mv;
-
-	}
-
-
 }
