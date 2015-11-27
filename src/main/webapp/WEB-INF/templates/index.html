@@ -6,7 +6,7 @@
 </head>
 <body>
 
-	<form action="/webtemplate/test/add" method="post" Accept-charset="UTF-8">
+	<form th:action="@{/test/add}" method="post" Accept-charset="UTF-8">
 		<input type="text" name="id"></input>
 		<input type="text" name="name"></input>
 		<input type="submit"></input>
