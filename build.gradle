@@ -88,17 +88,18 @@ eclipse {
 
             // 出力パスを gradle のデフォルトに合わせる
             whenMerged { classpath ->
-            	classpath.entries.findAll { it instanceof SourceFolder && it.path.startsWith("apt")      }*.output = "build/resources/main"
+				classpath.entries.findAll { it instanceof SourceFolder && it.path.startsWith("apt") }*.output = "build/resources/main"
                 classpath.entries.findAll { it instanceof SourceFolder && it.path.startsWith("src/main/java")      }*.output = "build/classes/main"
                 classpath.entries.findAll { it instanceof SourceFolder && it.path.startsWith("src/main/resources") }*.output = "build/resources/main"
                 classpath.entries.findAll { it instanceof SourceFolder && it.path.startsWith("src/test/java")      }*.output = "build/classes/test"
                 classpath.entries.findAll { it instanceof SourceFolder && it.path.startsWith("src/test/resources") }*.output = "build/resources/test"
-                classpath.entries.removeAll { it.kind == "output" }
+
             }
 
             // Web App ライブラリー のJARにソースがアタッチされない問題の対応(classpathの一番最後に追加する)
             withXml { xml ->
                 def node = xml.asNode()
+                node.appendNode('classpathentry', [ kind: 'src', path: 'apt', output: 'build/resources/main'])
                 node.remove( node.find { it.@path == 'org.eclipse.jst.j2ee.internal.web.container' } )
                 node.appendNode( 'classpathentry', [ kind: 'con', path: 'org.eclipse.jst.j2ee.internal.web.container', exported: 'true'])
             }
