@@ -88,6 +88,7 @@ eclipse {
 
             // 出力パスを gradle のデフォルトに合わせる
             whenMerged { classpath ->
+            	classpath.entries.findAll { it instanceof SourceFolder && it.path.startsWith("apt")      }*.output = "build/resources/main"
                 classpath.entries.findAll { it instanceof SourceFolder && it.path.startsWith("src/main/java")      }*.output = "build/classes/main"
                 classpath.entries.findAll { it instanceof SourceFolder && it.path.startsWith("src/main/resources") }*.output = "build/resources/main"
                 classpath.entries.findAll { it instanceof SourceFolder && it.path.startsWith("src/test/java")      }*.output = "build/classes/test"
