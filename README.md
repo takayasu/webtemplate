@@ -5,6 +5,8 @@ Webアプリケーションを早く開発するために、Javaフレームワ�
 + Thymeleaf
 + Doma2
 
+[![Build Status](https://travis-ci.org/takayasu/webtemplate.svg)](https://travis-ci.org/takayasu/webtemplate)
+
 # 設定ファイル
 設定ファイルはweb.xmlから追っていていけばわかるとは思いますが、以下のファイルが設定になっています。
 
