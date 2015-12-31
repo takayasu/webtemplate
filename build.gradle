@@ -2,6 +2,8 @@ apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'jacoco'
 
+
+
 // エンコーディング
 def defaultEncoding = 'UTF-8'
 [compileJava, compileTestJava]*.options*.encoding = defaultEncoding
@@ -14,8 +16,25 @@ targetCompatibility = jdkVersion
 // 依存関係の解決
 repositories {
     mavenCentral()
-    maven {url 'https://oss.sonatype.org/content/repositories/snapshots/'}
+    maven {
+    		url 'https://oss.sonatype.org/content/repositories/snapshots/'
+    	   	url 'https://plugins.gradle.org/m2/'
+   	}
 }
+
+//
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "org.flywaydb:flyway-gradle-plugin:3.2.1"
+  }
+}
+
+apply plugin: "org.flywaydb.flyway"
 
 // 依存ライブラリの設定
 dependencies {
@@ -25,8 +44,8 @@ dependencies {
 	compile 'org.springframework:spring-tx:4.2.3.RELEASE'
 	compile 'org.springframework:spring-jdbc:4.2.3.RELEASE'
 	compile 'org.postgresql:postgresql:9.4-1206-jdbc42'
-
 }
+
 
 // Domaの設定
 // JavaクラスとSQLファイルの出力先ディレクトリを同じにする
@@ -35,6 +54,12 @@ processResources.destinationDir = compileJava.destinationDir
 // コンパイルより前にSQLファイルを出力先ディレクトリにコピーするために依存関係を逆転する
 compileJava.dependsOn processResources
 
+
+//
+flyway {
+    url = 'jdbc:postgresql://172.16.143.136:5433/place'
+    user = 'postgres'
+}
 
 // eclipse プロジェクトの設定
 import org.gradle.plugins.ide.eclipse.model.SourceFolder

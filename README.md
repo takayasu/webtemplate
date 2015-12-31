@@ -1,3 +1,7 @@
+
+Travis CI : 
+[![Build Status](https://travis-ci.org/takayasu/webtemplate.svg)](https://travis-ci.org/takayasu/webtemplate)
+
 # 目的
 Webアプリケーションを早く開発するために、Javaフレームワークセットのテンプレートと基本的な使い方を実装しておき、それを元に開発するためのテンプレートになります。いろいろな選択がありますが、今回は以下のフレームワークを利用しています。
 
@@ -5,7 +9,6 @@ Webアプリケーションを早く開発するために、Javaフレームワ�
 + Thymeleaf
 + Doma2
 
-[![Build Status](https://travis-ci.org/takayasu/webtemplate.svg)](https://travis-ci.org/takayasu/webtemplate)
 
 # 設定ファイル
 設定ファイルはweb.xmlから追っていていけばわかるとは思いますが、以下のファイルが設定になっています。
